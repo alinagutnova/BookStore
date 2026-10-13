@@ -18,7 +18,7 @@ namespace BookStore
 
         public override decimal GetPrice()
         {
-            return Price + DeliveryCost;          
+            return Price + DeliveryCost;              
         }
     }
 }

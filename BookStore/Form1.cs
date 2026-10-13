@@ -22,15 +22,15 @@ namespace BookStore
         private void FormShop_Load(object sender, EventArgs e)
         {
             catalog = new Catalog("warehouse.csv");
-            ListViewItem[] items = new ListViewItem[catalog.Products.Count];
-            int i = 0;
-            foreach (var item in catalog.Products)
+            ListViewItem[] items = new ListViewItem[catalog.Count];
+            for(int i=0;i<catalog.Count;i++)
             {
+                var item = catalog[i];
                 ListViewItem list_item = new ListViewItem(item.Id.ToString());
                 list_item.SubItems.Add(item.Name);
                 list_item.SubItems.Add(item.Description);
                 list_item.SubItems.Add(item.Price.ToString());
-                items[i++] = list_item;
+                items[i] = list_item;
             }
             listViewProducts.Items.AddRange(items);
         }
@@ -42,6 +42,13 @@ namespace BookStore
             Product product = catalog.GetById(int.Parse(item.SubItems[0].Text));
             if (product==null) return;
             pictureBoxImageProduct.ImageLocation = product.ImagePath;
+            labelCost.Text = product.GetPrice().ToString();
+            if (product.Type == ProductType.Physical)
+            {
+                PhysicalProduct p = (PhysicalProduct)product;
+                p.SetAddress("address");
+                labelAddress.Text = p.GetAddress();
+            }
         }
     }
 }

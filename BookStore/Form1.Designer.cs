@@ -33,8 +33,9 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            button1 = new Button();
             pictureBoxImageProduct = new PictureBox();
+            labelCost = new Label();
+            labelAddress = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImageProduct).BeginInit();
             SuspendLayout();
             // 
@@ -72,16 +73,6 @@
             columnHeader4.Text = "Цена";
             columnHeader4.Width = 80;
             // 
-            // button1
-            // 
-            button1.Location = new Point(584, 297);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // pictureBoxImageProduct
             // 
             pictureBoxImageProduct.Location = new Point(425, 0);
@@ -91,19 +82,38 @@
             pictureBoxImageProduct.TabIndex = 2;
             pictureBoxImageProduct.TabStop = false;
             // 
+            // labelCost
+            // 
+            labelCost.AutoSize = true;
+            labelCost.Location = new Point(429, 223);
+            labelCost.Name = "labelCost";
+            labelCost.Size = new Size(0, 15);
+            labelCost.TabIndex = 3;
+            // 
+            // labelAddress
+            // 
+            labelAddress.AutoSize = true;
+            labelAddress.Location = new Point(466, 364);
+            labelAddress.Name = "labelAddress";
+            labelAddress.Size = new Size(38, 15);
+            labelAddress.TabIndex = 4;
+            labelAddress.Text = "label1";
+            // 
             // FormShop
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(labelAddress);
+            Controls.Add(labelCost);
             Controls.Add(pictureBoxImageProduct);
-            Controls.Add(button1);
             Controls.Add(listViewProducts);
             Name = "FormShop";
             Text = "Интернет магазин \"Букинист\"";
             Load += FormShop_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxImageProduct).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -113,7 +123,8 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private Button button1;
         private PictureBox pictureBoxImageProduct;
+        private Label labelCost;
+        private Label labelAddress;
     }
 }

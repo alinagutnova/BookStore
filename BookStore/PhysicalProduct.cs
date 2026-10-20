@@ -9,7 +9,6 @@ namespace BookStore
     public class PhysicalProduct : Product
     {
         public decimal DeliveryCost { get; set; }
-        private string Address { get; set; }
 
         public PhysicalProduct(string name, string description, decimal price, 
                                 string imagePath, decimal deliveryCost):
@@ -21,16 +20,6 @@ namespace BookStore
         public override decimal GetPrice()
         {
             return Price + DeliveryCost;              
-        }
-
-        public string GetAddress()
-        {
-            return Address;
-        }
-
-        public void SetAddress(string address)
-        { 
-            Address = address;
         }
     }
 }

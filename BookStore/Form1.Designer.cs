@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShop));
             listViewProducts = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            pictureBoxImageProduct = new PictureBox();
             labelCost = new Label();
-            labelAddress = new Label();
+            pictureBoxImageProduct = new PictureBox();
+            buttonAddCart = new Button();
+            pictureBoxShowCart = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImageProduct).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxShowCart).BeginInit();
             SuspendLayout();
             // 
             // listViewProducts
@@ -45,12 +48,12 @@
             listViewProducts.Dock = DockStyle.Left;
             listViewProducts.FullRowSelect = true;
             listViewProducts.Location = new Point(0, 0);
+            listViewProducts.MultiSelect = false;
             listViewProducts.Name = "listViewProducts";
             listViewProducts.Size = new Size(419, 450);
             listViewProducts.TabIndex = 0;
             listViewProducts.UseCompatibleStateImageBehavior = false;
             listViewProducts.View = View.Details;
-            listViewProducts.SelectedIndexChanged += listViewProducts_SelectedIndexChanged;
             listViewProducts.MouseClick += listViewProducts_MouseClick;
             // 
             // columnHeader1
@@ -73,6 +76,14 @@
             columnHeader4.Text = "Цена";
             columnHeader4.Width = 80;
             // 
+            // labelCost
+            // 
+            labelCost.AutoSize = true;
+            labelCost.Location = new Point(429, 223);
+            labelCost.Name = "labelCost";
+            labelCost.Size = new Size(0, 15);
+            labelCost.TabIndex = 3;
+            // 
             // pictureBoxImageProduct
             // 
             pictureBoxImageProduct.Location = new Point(425, 0);
@@ -82,29 +93,34 @@
             pictureBoxImageProduct.TabIndex = 2;
             pictureBoxImageProduct.TabStop = false;
             // 
-            // labelCost
+            // buttonAddCart
             // 
-            labelCost.AutoSize = true;
-            labelCost.Location = new Point(429, 223);
-            labelCost.Name = "labelCost";
-            labelCost.Size = new Size(0, 15);
-            labelCost.TabIndex = 3;
+            buttonAddCart.Location = new Point(429, 395);
+            buttonAddCart.Name = "buttonAddCart";
+            buttonAddCart.Size = new Size(154, 23);
+            buttonAddCart.TabIndex = 4;
+            buttonAddCart.Text = "Добавить в корзину";
+            buttonAddCart.UseVisualStyleBackColor = true;
+            buttonAddCart.Click += buttonAddCart_Click;
             // 
-            // labelAddress
+            // pictureBoxShowCart
             // 
-            labelAddress.AutoSize = true;
-            labelAddress.Location = new Point(466, 364);
-            labelAddress.Name = "labelAddress";
-            labelAddress.Size = new Size(38, 15);
-            labelAddress.TabIndex = 4;
-            labelAddress.Text = "label1";
+            pictureBoxShowCart.Image = (Image)resources.GetObject("pictureBoxShowCart.Image");
+            pictureBoxShowCart.Location = new Point(615, 0);
+            pictureBoxShowCart.Name = "pictureBoxShowCart";
+            pictureBoxShowCart.Size = new Size(41, 37);
+            pictureBoxShowCart.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxShowCart.TabIndex = 5;
+            pictureBoxShowCart.TabStop = false;
+            pictureBoxShowCart.Click += pictureBoxShowCart_Click;
             // 
             // FormShop
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(labelAddress);
+            Controls.Add(pictureBoxShowCart);
+            Controls.Add(buttonAddCart);
             Controls.Add(labelCost);
             Controls.Add(pictureBoxImageProduct);
             Controls.Add(listViewProducts);
@@ -112,6 +128,7 @@
             Text = "Интернет магазин \"Букинист\"";
             Load += FormShop_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxImageProduct).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxShowCart).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,8 +140,9 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private PictureBox pictureBoxImageProduct;
         private Label labelCost;
-        private Label labelAddress;
+        private PictureBox pictureBoxImageProduct;
+        private Button buttonAddCart;
+        private PictureBox pictureBoxShowCart;
     }
 }

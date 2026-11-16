@@ -13,12 +13,12 @@ namespace BookStore
 
         private void FormShop_Load(object sender, EventArgs e)
         {
-            user = new User("Алина", "agutnova@yandex.ru", "123456");
-            Text = "Интернет магазин \"Букинист\" - " + user.Name;
+            user = new User("Vittorio", "zangionti@yandex.ru", "123456");
+            Text = "W W \"W\" - " + user.Name;
 
             cart = new Cart(user);
 
-            catalog = new Catalog("warehouse.csv");
+            catalog = new Catalog("TextFile.txt");
             ListViewItem[] items = new ListViewItem[catalog.Count];
             for (int i = 0; i < catalog.Count; i++)
             {

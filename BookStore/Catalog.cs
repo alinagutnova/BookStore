@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace BookStore
 {
-    public class Catalog
+    public class Catalog : IEnumerable
     {
         private List<Product> products { get; set; }
         public int Count = 0;
 
-        public Catalog(string filename) {
+        public Catalog(string filename)
+        {
             products = new List<Product>();
             StreamReader reader = new StreamReader(filename);
             while (!reader.EndOfStream)
-            { 
+            {
                 string s = reader.ReadLine();
                 string[] ss = s.Split("|");
                 Product p;
@@ -48,10 +50,43 @@ namespace BookStore
         public Product? GetById(int id)
         {
             foreach (var item in products)
-            { 
+            {
                 if (item.Id == id) return item;
             }
             return null;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new CatalogEnumerator(products);
+        }
+    }
+
+    public class CatalogEnumerator : IEnumerator
+    {
+        private List<Product> products;
+        private int currentIndex = -1;
+
+        public CatalogEnumerator(List<Product> prods)
+        {
+            products = prods;
+        }
+        public object Current => products[currentIndex];
+
+        public bool MoveNext()
+        {
+            currentIndex++;
+            if (currentIndex >= products.Count)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
         }
     }
 }

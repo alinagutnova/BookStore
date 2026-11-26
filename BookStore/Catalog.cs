@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore
 {
-    public class Catalog
+    public class Catalog : IEnumerable
     {
         private List<Product> products { get; set; }
         public int Count = 0;
@@ -52,6 +53,11 @@ namespace BookStore
                 if (item.Id == id) return item;
             }
             return null;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return products.GetEnumerator();
         }
     }
 }
